@@ -1,5 +1,8 @@
 import math as m
 #Basic calculation
+def check_positive(*values):
+    if any(value <= 0 for value in values):
+        raise ValueError("All dimensions must be positive")
 def add(a,b):
     return a+b
 def subtract(a,b):
@@ -36,9 +39,11 @@ def cos(a):
 def tan(a):
     return m.tan(m.radians(a))
 def log(a):
+    if a <= 0:
+        raise ValueError("Log requires a positive number")
     return m.log(a)
 def factorial(a):
-    if a<0 or not isinstance(a,int):
+    if a<0 or type(a)!=int:
         raise ValueError("Factorial requires a non-negative integer")
     return m.factorial(a)
 # Length Conversion
@@ -78,7 +83,7 @@ def mg_to_g(a):
 def pound_to_kg(a):
     return a*0.45359237
 def kg_to_pound(a):
-    return a*2.204622
+    return a*2.2046226218
 def tonne_to_kg(a):
     return a*1000
 def kg_to_tonne(a):
@@ -89,19 +94,23 @@ def ounce_to_g(a):
 def C_to_F(a):
     return (a*9/5)+32
 def K_to_C(a):
+    if a < 0:
+        raise ValueError("Kelvin cannot be negative")
     return a-273.15
 def F_to_C(a):
     return (a-32)*5/9
-def C_to_k(a):
+def C_to_K(a):
     return a+273.15
 def f_to_k(a):
     return (a-32)*5/9+273.15
 def k_to_f(a):
+    if a < 0:
+        raise ValueError("Kelvin cannot be negative")
     return (a-273.15)*9/5+32
 #Speed
-def KMPS_to_MPS(a):
+def KMPH_to_MPS(a):
     return a/3.6
-def MPS_to_KMPS(a):
+def MPS_to_KMPH(a):
     return a*3.6
 def MPH_to_KMPH(a):
     return a*1.609344
@@ -180,100 +189,220 @@ def tb_to_gb(a):
 #                    GEOMETRY
 #area
 def square_area(a):
-    if a<=0:
-        raise ValueError("side always be positive")
+    check_positive(a)
     return a**2
 def rectangle_area(l,b):
-    if l<=0 and b<=0:
-        raise ValueError("Length,breath always be positive")
+    check_positive(l,b)
     return l*b
 def circle_area(r):
-    if r<=0:
-        raise ValueError("Radius always be positive")
+    check_positive(r)
     return m.pi*r*r
 def triangle_area(b,h):
+    check_positive(b,h)
     return 1/2*b*h
 def paralellogram_area(b,h):
+    check_positive(b,h)
     return b*h
 def rhombus_area(d1,d2):
+    check_positive(d1,d2)
     return 1/2*d1*d2
 def trapezium_area(a,b,h):
+    check_positive(a,b,h)
     return 1/2*(a+b)*h
 def equilateral_triangle_area(a):
+    check_positive(a)
     return (m.sqrt(3)/4)*a**2
 #Perimeter
 def square_perimeter(a):
-    if a>0:
-            raise ValueError("side always be positive")
+    check_positive(a)
     return 4*a 
 def rectangle_perimeter(l,b):
-    if l>0 and b>0:
-            raise ValueError("Length,breath always be positive")
+    check_positive(l,b)
     return 2*(l+b)
-def circle_perimeter(r):
-    if r>0:
-            raise ValueError("Radius always be positive")
+def circle_circumference(r):
+    check_positive(r)
     return 2*m.pi*r
 def triangle_perimeter(a,b,c):
+    check_positive(a,b,c)
+    if a+b <= c or a+c <= b or b+c <= a:
+        raise ValueError("Invalid triangle sides")
     return a+b+c
 def parallelogram_perimeter(a,b):
+    check_positive(a,b)
     return 2*(a+b)
 def rhombus_perimeter(a):
+    check_positive(a)
     return 4*a
-def trapezium_primeter(a,b,c,d):
+def trapezium_perimeter(a,b,c,d):
+    check_positive(a,b,c,d)
     return a+b+c+d
 def equilateral_triangle_perimeter(a):
+    check_positive(a)
     return 3*a
 #volume
 def volume_cube(a):
+    check_positive(a)
     return a**3
 def volume_cuboid(l,b,h):
+    check_positive(l,b,h)
     return l*b*h
 def volume_cylinder(r,h):
+    check_positive(r,h)
     return m.pi*r*r*h
 def volume_cone(r,h):
+    check_positive(r,h)
     return 1/3*m.pi*r*r*h
 def volume_sphere(r):
+    check_positive(r)
     return 4/3*m.pi*r**3
 def volume_hemisphere(r):
+    check_positive(r)
     return 2/3*m.pi*r**3
 def volume_triangular_prism(b, h, L):
+    check_positive(b,h,L)
     return 0.5 * b * h * L
 def volume_square_pyramid(a, h):
+    check_positive(a,h)
     return (a ** 2 * h) / 3
 def volume_rectangular_pyramid(l, b, h):
+    check_positive(l,b,h)
     return (l * b * h) / 3
 
 # Cube
 def tsa_cube(a):
+    check_positive(a)
     return 6 * a ** 2
 def lateral_area_cube(a):
+    check_positive(a)
     return 4 * a ** 2
 # Cuboid
 def tsa_cuboid(l, b, h):
+    check_positive(l,b,h)
     return 2 * (l*b + b*h + h*l)
 def lateral_area_cuboid(l, b, h):
+    check_positive(l,b,h)
     return 2 * h * (l + b)
 # Cylinder
 def tsa_cylinder(r, h):
+    check_positive(r,h)
     return 2 * m.pi * r * (r + h)
 def curved_area_cylinder(r, h):
+    check_positive(r,h)
     return 2 * m.pi * r * h
 # Cone
-def tsa_cone(r, slant_height):
-    return m.pi * r * (r + slant_height)
+def tsa_cone(r, h, l):
+    check_positive(r, h, l)
+
+    expected_l = m.sqrt(r**2 + h**2)
+
+    if not m.isclose(l, expected_l):
+        raise ValueError("Invalid cone dimensions")
+
+    return m.pi * r * (r + l)
 def curved_area_cone(r, slant_height):
+    check_positive(r,slant_height)
     return m.pi * r * slant_height
 # Sphere
 def surface_area_sphere(r):
+    check_positive(r)
     return 4 * m.pi * r ** 2
 # Hemisphere
 def tsa_hemisphere(r):
+    check_positive(r)
     return 3 * m.pi * r ** 2
 def curved_area_hemisphere(r):
+    check_positive(r)
     return 2 * m.pi * r ** 2
 # Square Pyramid
-def tsa_square_pyramid(a, slant_height):
-    return a ** 2 + 2 * a * slant_height
+def tsa_square_pyramid(a, h, l):
+    check_positive(a, h, l)
+
+    expected_l = m.sqrt(h**2 + (a/2)**2)
+
+    if not m.isclose(l, expected_l):
+        raise ValueError("Invalid pyramid dimensions")
+
+    return a**2 + 2*a*l
 def lateral_area_square_pyramid(a, slant_height):
+    check_positive(a,slant_height)
     return 2 * a * slant_height
+
+
+# Number system conversion
+def binary_to_decimal(n):
+    return int(str(n), 2)
+def binary_to_octal(n):
+    return format(int(str(n), 2), 'o')
+def binary_to_hexadecimal(n):
+    return format(int(str(n), 2), 'X')
+def decimal_to_binary(n):
+    return format(int(str(n), 10), 'b')
+def decimal_to_octal(n):
+    return format(int(str(n), 10), 'o')
+def decimal_to_hexadecimal(n):
+    return format(int(str(n), 10), 'X')
+def octal_to_binary(n):
+    return format(int(str(n), 8), 'b')
+def octal_to_decimal(n):
+    return int(str(n), 8)
+def octal_to_hexadecimal(n):
+    return format(int(str(n), 8), 'X')
+def hexadecimal_to_binary(n):
+    return format(int(str(n), 16), 'b')
+def hexadecimal_to_decimal(n):
+    return int(str(n), 16)
+def hexadecimal_to_octal(n):
+    return format(int(str(n), 16), 'o')
+
+
+# Number Analyzer
+def is_prime(n):
+    if n<=1:
+        return False
+    else:
+        for i in range(2,int(n**0.5) + 1):
+            if n%i==0:
+                return False
+                 
+        return True
+def is_armstrong(n):
+    if n<0:
+        return False
+    temp=n
+    l=len(str(n))
+    a=0
+    while(n!=0):
+        rem=n%10
+        a=a+rem**l
+        n=n//10
+    if a==temp:
+        return True
+    else:
+        return False
+def is_palindrome(n):
+    if n<0:
+        return False
+    n=str(n)
+    if n==n[::-1]:
+        return True
+    else:
+        return False
+def is_perfect(n):
+    if n<=0:
+        return False
+    total=0
+    for i in range(1,n):
+        if n%i==0:
+            total=total+i
+    return total==n
+def fibonacci(n):
+    if n<=0:
+        return []
+    a=0
+    b=1
+    result=[]
+    for i in range(n):
+        result.append(a)
+        a,b=b,a+b
+    return result
+
