@@ -31,21 +31,100 @@ def square_root(a):
     if a<0:
         raise ValueError("Negative Number not allowed")
     return m.sqrt(a)
-#Scientific
-def sin(a):
-    return m.sin(m.radians(a))
-def cos(a):
-    return m.cos(m.radians(a))
-def tan(a):
-    return m.tan(m.radians(a))
+def modulus(a):
+    if (a<0):
+        return -(a)
+    return a
 def log(a):
     if a <= 0:
         raise ValueError("Log requires a positive number")
     return m.log(a)
 def factorial(a):
-    if a<0 or type(a)!=int:
+    if type(a) != int or a < 0:
         raise ValueError("Factorial requires a non-negative integer")
     return m.factorial(a)
+# Trigonometric Functions (Angle in Degrees)
+
+def sin(a):
+    return m.sin(m.radians(a))
+
+
+def cos(a):
+    return m.cos(m.radians(a))
+
+
+def tan(a):
+    value = m.cos(m.radians(a))
+
+    if m.isclose(value, 0, abs_tol=1e-12):
+        raise ValueError("Tan is undefined for this angle")
+
+    return m.tan(m.radians(a))
+
+
+# Reciprocal Trigonometric Functions
+
+def cosec(a):
+    value = m.sin(m.radians(a))
+
+    if m.isclose(value, 0, abs_tol=1e-12):
+        raise ValueError("Cosec is undefined for this angle")
+
+    return 1 / value
+
+
+def sec(a):
+    value = m.cos(m.radians(a))
+
+    if m.isclose(value, 0, abs_tol=1e-12):
+        raise ValueError("Sec is undefined for this angle")
+
+    return 1 / value
+
+
+def cot(a):
+    value = m.sin(m.radians(a))
+
+    if m.isclose(value, 0, abs_tol=1e-12):
+        raise ValueError("Cot is undefined for this angle")
+
+    return 1 / m.tan(m.radians(a))
+
+
+# Hyperbolic Functions
+
+def sinh(a):
+    return m.sinh(a)
+
+
+def cosh(a):
+    return m.cosh(a)
+
+
+def tanh(a):
+    return m.tanh(a)
+
+
+# Reciprocal Hyperbolic Functions
+
+def cosech(a):
+    if a == 0:
+        raise ValueError("Cosech is undefined at zero")
+
+    return 1 / m.sinh(a)
+
+
+def sech(a):
+    return 1 / m.cosh(a)
+
+
+def coth(a):
+    if a == 0:
+        raise ValueError("Coth is undefined at zero")
+
+    return 1 / m.tanh(a)
+
+# Unit conversion
 # Length Conversion
 def m_to_cm(a):
     return a*100
@@ -71,7 +150,7 @@ def m_to_feet(a):
     return a*3.28084
 def yard_to_m(a):
     return a*0.9144
-#Mass Convrsion
+#Mass Conversion
 def g_to_kg(a):
     return a/1000
 def kg_to_g(a):
@@ -100,10 +179,14 @@ def K_to_C(a):
 def F_to_C(a):
     return (a-32)*5/9
 def C_to_K(a):
+    if a < -273.15:
+        raise ValueError("Temperature below absolute zero")
     return a+273.15
-def f_to_k(a):
+def F_to_K(a):
+    if a < -459.67:
+        raise ValueError("Temperature below absolute zero")
     return (a-32)*5/9+273.15
-def k_to_f(a):
+def K_to_F(a):
     if a < 0:
         raise ValueError("Kelvin cannot be negative")
     return (a-273.15)*9/5+32
@@ -120,8 +203,17 @@ def MPH_to_MPS(a):
     return a*0.44704
 def MPS_to_MPH(a):
     return a/0.44704
-#TIME
 
+# Time Conversion
+
+def month_to_days(a):
+    return a * 30  
+def week_to_min(a):
+    return a * 7 * 24 * 60
+def s_to_ms(a):
+    return a * 1000
+def ms_to_s(a):
+    return a / 1000
 def h_to_m(a):
     return a*60
 def m_to_s(a):
@@ -138,8 +230,7 @@ def days_to_min(a):
     return a*1440
 def year_to_days(a):
     return a*365
-def ms_to_s(a):
-    return a/1000
+
 #volume 
 def l_to_ml(a):
     return a*1000
@@ -158,14 +249,24 @@ def cubic_cm_to_ml(a):
 #Area conversion
 def square_m_to_square_cm(a):
     return a*10000
+def square_cm_to_square_m(a):
+    return a/10000
 def square_km_to_square_m(a):
     return a*1000000
+def square_m_to_square_km(a):
+    return a/1000000
 def hectare_to_square_m(a):
     return a*10000
+def square_m_to_hectare(a):
+    return a/10000
 def acre_to_square_m(a):
     return a*4046.86
+def square_m_to_acre(a):
+    return a/4046.86
 def square_foot_to_square_m(a):
     return a*0.092903
+def square_m_to_square_foot(a):
+    return a/0.092903
 #pressure conversion
 def bar_to_pascal(a):
     return a*100000
@@ -186,7 +287,7 @@ def gb_to_mb(a):
     return a*1000
 def tb_to_gb(a):
     return a*1000
-#                    GEOMETRY
+#GEOMETRY
 #area
 def square_area(a):
     check_positive(a)
@@ -406,3 +507,8 @@ def fibonacci(n):
         a,b=b,a+b
     return result
 
+
+#Angle converter
+print(" 1-Basic Calculator        2-Trignometry Calculatior       3-Unit Converter" \
+"        4-Geometry Calculation        5-Number System Converter        " \
+"6-Number Analyzer        7-")
