@@ -1,19 +1,47 @@
 import math as m
+import numpy as np
 #Basic calculation
 def check_positive(*values):
     if any(value <= 0 for value in values):
         raise ValueError("All dimensions must be positive")
-def add(a,b):
-    return a+b
-def subtract(a,b):
-    return a-b
-def multiply(a,b):
-    return a*b
-def divide(a,b):
-    if (b==0):
-        raise ZeroDivisionError("Cannot divide by zero")
-    else:
-        return a/b
+def takeinput(*args):
+    l=[]
+    try:
+        for i in args:
+            a=int(input("Enter the number:"))
+            l.append(a)
+    except ValueError:
+        print("Invalid input")
+
+    return l
+
+def add(*args):
+    return sum(args)
+def subtract(*args):
+    if len(args) < 2:
+        raise ValueError("Enter at least two numbers")
+    total=args[0]
+    for i in args[1:]:
+        total=total-i
+    return total
+def multiply(*args):
+    mult=1
+    for i in args:
+        mult*=i
+    return mult
+def divide(*args):
+    if len(args) < 2:
+        raise ValueError("Enter at least two numbers")
+
+    result = args[0]
+
+    for i in args[1:]:
+        if i == 0:
+            raise ZeroDivisionError("Cannot divide by zero")
+
+        result = result / i
+
+    return result
 def remainder(a,b):
     if (b==0):
          raise ZeroDivisionError("Cannot divide by zero")
@@ -507,8 +535,24 @@ def fibonacci(n):
         a,b=b,a+b
     return result
 
-
-#Angle converter
+print("=="*50)
+print("Menu")
+print("=="*50)
 print(" 1-Basic Calculator        2-Trignometry Calculatior       3-Unit Converter" \
 "        4-Geometry Calculation        5-Number System Converter        " \
-"6-Number Analyzer        7-")
+"6-Number Analyzer  7-Exit")
+print("=="*50)
+while True:
+    user=int(input("Enter the number of calculator you want to use from menu:"))
+    if user==1:
+        print("=="*50)
+        print("Basic Calculator")
+        print("=="*50)
+        print("1-add        2-subtract       3-multiply        4-divide" \
+        "        5-remainder        6-power" \
+        "       7-square       8-cube       9-square_root" \
+        "       10-modulus       11-log       12-factorial       13-Exit")
+        print("=="*50)
+        user=int(input("Enter the number of operation you want to perform from Basic Calculator:"))
+        if user==1:
+             
