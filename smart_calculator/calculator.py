@@ -1,19 +1,21 @@
 import math as m
-import numpy as np
 #Basic calculation
 def check_positive(*values):
     if any(value <= 0 for value in values):
         raise ValueError("All dimensions must be positive")
-def takeinput(*args):
-    l=[]
-    try:
-        for i in args:
-            a=int(input("Enter the number:"))
-            l.append(a)
-    except ValueError:
-        print("Invalid input")
+def takeinput(n):
+    numbers = []
 
-    return l
+    for i in range(n):
+        while True:
+            try:
+                num = int(input("Enter a number: "))
+                numbers.append(num)
+                break
+            except ValueError:
+                print("Invalid input! Please enter an integer.")
+
+    return numbers
 
 def add(*args):
     return sum(args)
@@ -42,15 +44,28 @@ def divide(*args):
         result = result / i
 
     return result
-def remainder(a,b):
-    if (b==0):
-         raise ZeroDivisionError("Cannot divide by zero")
-    else:
-        return a%b
-def power(a,b):
-    if a==0 and b<0:
-        raise ZeroDivisionError("Zero cannot have a negative power")
-    return a**b
+def remainder(*args):
+    if len(args)<2:
+        raise ValueError("Enter atleast two numbers")
+    result=args[0]
+    for i in args[1:]:
+        if i==0:
+            raise ZeroDivisionError("Cannot divide by zero")
+        result=result%i
+    return result
+def power(*args):
+    if len(args) < 2:
+        raise ValueError("Enter both base and exponent")
+
+    result = args[0]
+
+    for i in args[1:]:
+        if result == 0 and i < 0:
+            raise ZeroDivisionError("Zero cannot have a negative power")
+
+        result = result ** i
+
+    return result
 def square(a):
     return a**2
 def cube(a):
@@ -553,6 +568,28 @@ while True:
         "       7-square       8-cube       9-square_root" \
         "       10-modulus       11-log       12-factorial       13-Exit")
         print("=="*50)
-        user=int(input("Enter the number of operation you want to perform from Basic Calculator:"))
-        if user==1:
-             
+        choice=int(input("Enter the number of operation you want to perform from Basic Calculator:"))
+        if choice==1:
+             n=input("How many input you want to give:")
+             numbers=takeinput(int(n))
+             print(add(*numbers))
+        elif choice==2:
+            n=input("How many input you want to give:")
+            numbers=takeinput(int(n))
+            print(subtract(*numbers))
+        elif choice==3:
+            n=input("How many input you want to give:")
+            numbers=takeinput(int(n))
+            print(multiply(*numbers))
+        elif choice==4:
+            n=input("How many input you want to give:")
+            numbers=takeinput(int(n))
+            print(divide(*numbers))
+        elif choice==5:
+            n=input("How many input you want to give:")
+            numbers=takeinput(int(n))
+            print(remainder(*numbers))
+        elif choice==6:
+            n=input("How many input you want to give:")
+            numbers=takeinput(int(n))
+            print(power(*numbers))
