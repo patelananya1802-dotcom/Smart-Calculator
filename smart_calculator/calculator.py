@@ -17,6 +17,14 @@ def takeinput(n):
 
     return numbers
 
+def get_count(message):
+    while True:
+        try:
+            n = int(input(message))
+            return n
+        except ValueError as e:
+            print("Invalid input:", e)
+            
 def add(*args):
     return sum(args)
 def subtract(*args):
@@ -553,12 +561,13 @@ def fibonacci(n):
 print("=="*50)
 print("Menu")
 print("=="*50)
-print(" 1-Basic Calculator        2-Trignometry Calculatior       3-Unit Converter" \
+print(" 1-Basic Calculator        2-Trignometry Calculator       3-Unit Converter" \
 "        4-Geometry Calculation        5-Number System Converter        " \
 "6-Number Analyzer  7-Exit")
 print("=="*50)
 while True:
-    user=int(input("Enter the number of calculator you want to use from menu:"))
+    user=get_count("Enter calculator number: ")
+    
     if user==1:
         print("=="*50)
         print("Basic Calculator")
@@ -568,28 +577,344 @@ while True:
         "       7-square       8-cube       9-square_root" \
         "       10-modulus       11-log       12-factorial       13-Exit")
         print("=="*50)
-        choice=int(input("Enter the number of operation you want to perform from Basic Calculator:"))
+        choice=get_count("Enter operation number: ")
+        
         if choice==1:
-             n=input("How many input you want to give:")
-             numbers=takeinput(int(n))
+             n=get_count("How many numbers do you want to enter: ")
+             numbers=takeinput(n)
              print(add(*numbers))
         elif choice==2:
-            n=input("How many input you want to give:")
-            numbers=takeinput(int(n))
+            n=get_count("How many numbers do you want to enter: ")
+            numbers=takeinput(n)
             print(subtract(*numbers))
         elif choice==3:
-            n=input("How many input you want to give:")
-            numbers=takeinput(int(n))
+            n=get_count("How many numbers do you want to enter: ")
+            numbers=takeinput(n)
             print(multiply(*numbers))
         elif choice==4:
-            n=input("How many input you want to give:")
-            numbers=takeinput(int(n))
+            n=get_count("How many numbers do you want to enter: ")
+            numbers=takeinput(n)
             print(divide(*numbers))
         elif choice==5:
-            n=input("How many input you want to give:")
-            numbers=takeinput(int(n))
+            n=get_count("How many numbers do you want to enter: ")
+            numbers=takeinput(n)
             print(remainder(*numbers))
         elif choice==6:
-            n=input("How many input you want to give:")
-            numbers=takeinput(int(n))
+            n=get_count("How many numbers do you want to enter: ")
+            numbers=takeinput(n)
             print(power(*numbers))
+        elif choice==7:
+            numbers=takeinput(1)
+            print(square(numbers[0]))
+        elif choice==8:
+            numbers=takeinput(1)
+            print(cube(numbers[0]))
+        elif choice==9:
+            numbers=takeinput(1)
+            print(square_root(numbers[0]))
+        elif choice==10:
+            numbers=takeinput(1)
+            print(modulus(numbers[0]))
+        elif choice==11:
+            numbers=takeinput(1)
+            print(log(numbers[0]))
+        elif choice==12:
+            numbers=takeinput(1)
+            print(factorial(numbers[0]))
+        elif choice==13:
+            break
+        else:
+            print("Invalid choice")
+    elif user==2:
+        print("=="*50)
+        print("Trignometry Calculator")
+        print("=="*50)
+        print("1- sin        2-cos       3-tan       4-cosec    " \
+        "5-sec      6-cot      7-sinh       8-cosh      9-tanh" \
+        "    10-cosech       11-sech      12-coth       13-Exit")
+        print("=="*50)
+        choice=get_count("Enter operation number: ")
+        if choice==1:
+            numbers=takeinput(1)
+            print(sin(numbers[0]))
+        elif choice==2:
+            numbers=takeinput(1)
+            print(cos(numbers[0]))
+        elif choice==3:
+            numbers=takeinput(1)
+            print(tan(numbers[0]))
+        elif choice==4:
+            numbers=takeinput(1)
+            print(cosec(numbers[0]))
+        elif choice==5:
+            numbers=takeinput(1)
+            print(sec(numbers[0]))
+        elif choice==6:
+            numbers=takeinput(1)
+            print(cot(numbers[0]))
+        elif choice==7:
+            numbers=takeinput(1)
+            print(sinh(numbers[0]))
+        elif choice==8:
+            numbers=takeinput(1)
+            print(cosh(numbers[0]))
+        elif choice==9:
+            numbers=takeinput(1)
+            print(tanh(numbers[0]))
+        elif choice==10:
+            numbers=takeinput(1)
+            print(cosech(numbers[0]))
+        elif choice==11:
+            numbers=takeinput(1)
+            print(sech(numbers[0]))
+        elif choice==12:
+            numbers=takeinput(1)
+            print(coth(numbers[0]))
+        elif choice==13:
+            break
+        else:
+            print("Invalid choice")
+    elif user==3:
+        print("=="*50)
+        print("Unit Conversion")
+        print("=="*50)
+        print("1-Length Conversion      2-Mass Conversion" \
+        "    3-Temperature Conversion      4-Speed Conversion" \
+        "    5-Time Conversion      6-Volume Conversion  " \
+        "     7-Area Conversion     8-Pressure Conversion" \
+        "     9-Data Storage Conversion     10-Exit")
+        option=get_count("Enter Conversion type:")
+        if option==1:
+            print("=="*50)
+            print("Length Conversion")
+            print("=="*50)
+            print("1-m_to_cm    2-cm_to_m    3-km_to_m" \
+            "     4-cm_to_mm     5-m_to_km     6-mm_to_cm   " \
+            " 7-km_to_mile    8-mile_to_km     9-inch_to_cm" \
+            "    10-feet_to_m     11-m_to_feet    12-yard_to_m     13-Exit")
+            print("=="*50)
+            choice=get_count("Enter operation number: ")
+            if choice==1:
+                numbers=takeinput(1)
+                print(m_to_cm(*numbers),"cm")
+            elif choice==2:
+                numbers=takeinput(1)
+                print(cm_to_m(*numbers),"m")
+            elif choice==3:
+                numbers=takeinput(1)
+                print(km_to_m(*numbers),"m")
+            elif choice==4:
+                numbers=takeinput(1)
+                print(cm_to_mm(*numbers),"mm")
+            elif choice==5:
+                numbers=takeinput(1)
+                print(m_to_km(*numbers),"km")
+            elif choice==6:
+                numbers=takeinput(1)
+                print(mm_to_cm(*numbers),"cm")
+            elif choice==7:
+                numbers=takeinput(1)
+                print(km_to_mile(*numbers),"mile")
+            elif choice==8:
+                numbers=takeinput(1)
+                print(mile_to_km(*numbers),"km")
+            elif choice==9:
+                numbers=takeinput(1)
+                print(inch_to_cm(*numbers),"cm")
+            elif choice==10:
+                numbers=takeinput(1)
+                print(feet_to_m(*numbers),"m")
+            elif choice==11:
+                numbers=takeinput(1)
+                print(m_to_feet(*numbers),"feet")
+            elif choice==12:
+                numbers=takeinput(1)
+                print(yard_to_m(*numbers),"m")
+            elif choice==13:
+                break
+        elif option==2:
+            print("=="*50)
+            print("Mass Conversion")
+            print("=="*50)
+            print("1-g_to_kg    2-kg_to_g    3-g_to_mg" \
+            "    4-mg_to_g      5-pound_to_kg      6-kg_to_pound" \
+            "    7-tonne_to_kg     8-kg_to_tonne     9-ounce_to_g" \
+            "   10-Exit")
+            print("=="*50)
+            choice=get_count("Enter operation number: ")
+            if choice==1:
+                numbers=takeinput(1)
+                print(g_to_kg(*numbers),"kg")
+            elif choice==2:
+                numbers=takeinput(1)
+                print(kg_to_g(*numbers),"g")
+            elif choice==3:
+                numbers=takeinput(1)
+                print(g_to_mg(*numbers),"mg")
+            elif choice==4:
+                numbers=takeinput(1)
+                print(mg_to_g(*numbers),"g")
+            elif choice==5:
+                numbers=takeinput(1)
+                print(pound_to_kg(*numbers),"kg")
+            elif choice==6:
+                numbers=takeinput(1)
+                print(kg_to_pound(*numbers),"pound")
+            elif choice==7:
+                numbers=takeinput(1)
+                print(tonne_to_kg(*numbers),"kg")
+            elif choice==8:
+                numbers=takeinput(1)
+                print(kg_to_tonne(*numbers),"tonne")
+            elif choice==9:
+                numbers=takeinput(1)
+                print(ounce_to_g(*numbers),"g")
+            elif choice==10:
+                break
+            else:
+                print("Invalid Input")
+        elif option==3:
+            print("=="*50)
+            print("Temperature Conversion")
+            print("=="*50)
+            print("1-C_to_F     2-K_to_C     3-F_to_C " \
+            "   4-C_to_K     5-F_to_K     6-K_to_F    7-Exit")
+            print("=="*50)
+            choice=get_count("Enter operation number:")
+            if choice==1:
+                numbers=takeinput(1)
+                print(C_to_F(*numbers),"F")
+            elif choice==2:
+                numbers=takeinput(1)
+                print(K_to_C(*numbers),"C")
+            elif choice==3:
+                numbers=takeinput(1)
+                print(F_to_C(*numbers),"C")
+            elif choice==4:
+                numbers=takeinput(1)
+                print(C_to_K(*numbers),"K")
+            elif choice==5:
+                numbers=takeinput(1)
+                print(F_to_K(*numbers),"K")
+            elif choice==6:
+                numbers=takeinput(1)
+                print(K_to_F(*numbers),"F")
+            elif choice==7:
+                break
+            else:
+                print("Invalid Input")
+        elif option==4:
+            print("=="*50) 
+            print("Speed Conversion") 
+            print("=="*50)  
+            print("1-km_per_h_to_m_per_s        2-m_per_s_to_km_per_h" \
+            "     3-m_per_h_to_km_per_h          4-km_per_h_to_m_per_h" \
+            "     5-m_per_h_to_m_per_s        6-m_per_s_to_m_per_h       7-Exit")
+            print("=="*50)
+            choice=get_count("Enter operation number:")
+            if choice==1:
+                numbers=takeinput(1)
+                print(KMPH_to_MPS(*numbers),"m/s")
+            elif choice==2:
+                numbers=takeinput(1)
+                print(MPS_to_KMPH(*numbers),"km/h")
+            elif choice==3:
+                numbers=takeinput(1)
+                print(MPH_to_KMPH(*numbers),"km/h")
+            elif choice==4:
+                numbers=takeinput(1)
+                print(KMPH_to_MPH(*numbers),"m/h")
+            elif choice==5:
+                numbers=takeinput(1)
+                print(MPH_to_MPS(*numbers),"m/s")
+            elif choice==6:
+                numbers=takeinput(1)
+                print(MPS_to_MPH(*numbers),"m/h")
+            elif choice==7:
+                break
+            else:
+                print("Invalid Input")
+        elif option==5:
+            print("=="*50)
+            print("Time Conversion")
+            print("=="*50)
+            print("1-Month_to_days     2-Week_to_min     3-sec_to_millisec " \
+            "    4-millisec_to_sec      5-Hours_to_min     6-min_to_sec    " \
+            "     7-Hours_to_sec      8-Day_to_Hours        9-Week_to_days" \
+            "     10-Week_to_Hours       11-Days_to_min      12-Year_to_days" \
+            "     13-Exit")
+            print("=="*50)
+            choice=get_count("Enter operation number:")
+            if choice==1:
+                numbers=takeinput(1)
+                print(month_to_days(*numbers),"days")
+            elif choice==2:
+                numbers=takeinput(1)
+                print(week_to_min(*numbers),"min")
+            elif choice==3:
+                numbers=takeinput(1)
+                print(s_to_ms(*numbers),"millisec")
+            elif choice==4:
+                numbers=takeinput(1)
+                print(ms_to_s(*numbers),"sec")
+            elif choice==5:
+                numbers=takeinput(1)
+                print(h_to_m(*numbers),"min")
+            elif choice==6:
+                numbers=takeinput(1)
+                print(m_to_s(*numbers),"sec")
+            elif choice==7:
+                numbers=takeinput(1)
+                print(h_to_s(*numbers),"sec")
+            elif choice==8:
+                numbers=takeinput(1)
+                print(day_to_h(*numbers),"h")
+            elif choice==9:
+                numbers=takeinput(1)
+                print(week_to_days(*numbers),"days")
+            elif choice==10:
+                numbers=takeinput(1)
+                print(week_to_h(*numbers),"h")
+            elif choice==11:
+                numbers=takeinput(1)
+                print(days_to_min(*numbers),"min")
+            elif choice==12:
+                numbers=takeinput(1)
+                print(year_to_days(*numbers),"days")
+            elif choice==13:
+                break
+        elif option==6:
+            print("=="*50)
+            print("Volume Conversion")
+            print("=="*50)
+            print("1-l_to_ml       2-ml_to_l     3-l_to_cubicmeter" \
+            "      4-cubicmeter_to_l       5-l_to_us_Gallon        " \
+            "6-us_gallon_to_l       7-cubic_cm_to_ml      8-Exit")
+            print("=="*50)
+            choice=get_count("Enter operation number: ")
+        elif choice==1:
+            numbers=takeinput(1)
+            print(l_to_ml(*numbers),"ml")
+            if choice==2:
+                numbers=takeinput(1)
+                print(ml_to_l(*numbers),"l")
+            elif choice==3:
+                numbers=takeinput(1)
+                print(l_to_cubicmeter(*numbers),"m")
+            elif choice==4:
+                numbers=takeinput(1)
+                print(cubicmeter_to_l(*numbers),"l")
+            elif choice==5:
+                numbers=takeinput(1)
+                print(l_to_us_gallon(*numbers),"us_Gallon")
+            elif choice==6:
+                numbers=takeinput(1)
+                print(us_gallon_to_l(*numbers),"l")
+            elif choice==7:
+                numbers=takeinput(1)
+                print(cubic_cm_to_ml(*numbers),"ml")
+            elif choice==8:
+                break
+        
+                
+
