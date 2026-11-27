@@ -383,7 +383,6 @@ def parallelogram_perimeter(a,b):
     check_positive(a,b)
     return 2*(a+b)
 def rhombus_perimeter(a):
-    check_positive(a)
     return 4*a
 def trapezium_perimeter(a,b,c,d):
     check_positive(a,b,c,d)
@@ -683,6 +682,7 @@ while True:
         "    5-Time Conversion      6-Volume Conversion  " \
         "     7-Area Conversion     8-Pressure Conversion" \
         "     9-Data Storage Conversion     10-Exit")
+        print("=="*50)
         option=get_count("Enter Conversion type:")
         if option==1:
             print("=="*50)
@@ -892,10 +892,10 @@ while True:
             "6-us_gallon_to_l       7-cubic_cm_to_ml      8-Exit")
             print("=="*50)
             choice=get_count("Enter operation number: ")
-        elif choice==1:
-            numbers=takeinput(1)
-            print(l_to_ml(*numbers),"ml")
-            if choice==2:
+            if choice==1:
+                numbers=takeinput(1)
+                print(l_to_ml(*numbers),"ml")
+            elif choice==2:
                 numbers=takeinput(1)
                 print(ml_to_l(*numbers),"l")
             elif choice==3:
@@ -915,6 +915,233 @@ while True:
                 print(cubic_cm_to_ml(*numbers),"ml")
             elif choice==8:
                 break
+        elif option==7:
+            print("=="*50)
+            print("Area Conversion")
+            print("=="*50)
+            print("1-square_m_to_square_cm        2-square_cm_to_square_m" \
+            "   3-square_km_to_square_m      4-square_m_to_square_km" \
+            "    5- hectare_to_square_m       6-square_m_to_hectare" \
+            "    7-acre_to_square_m        8-square_m_to_acre" \
+            "     9-square_foot_to_square_m      10-square_m_to_square_foot" \
+            "     11-Exit")
+            print("=="*50)
+            choice=get_count("Enter operation number:")
+            if choice==1:
+                numbers=takeinput(1)
+                print(square_m_to_square_cm(*numbers),"square cm")
+            elif choice==2:
+                numbers=takeinput(1)
+                print(square_cm_to_square_m(*numbers),"square m")
+            elif choice==3:
+                numbers=takeinput(1)
+                print(square_km_to_square_m(*numbers),"square m")
+            elif choice==4:
+                numbers=takeinput(1)
+                print(square_m_to_square_km(*numbers),"square km")
+            elif choice==5:
+                numbers=takeinput(1)
+                print(hectare_to_square_m(*numbers),"square m")
+            elif choice==6:
+                numbers=takeinput(1)
+                print(square_m_to_hectare(*numbers),"hectare")
+            elif choice==7:
+                numbers=takeinput(1)
+                print(acre_to_square_m(*numbers),"square m")
+            elif choice==8:
+                numbers=takeinput(1)
+                print(square_m_to_acre(*numbers),"acre")
+            elif choice==9:
+                numbers=takeinput(1)
+                print(square_foot_to_square_m(*numbers),"square m")
+            elif choice==10:
+                numbers=takeinput(1)
+                print(square_m_to_square_foot(*numbers),"square foot")
+            elif choice==11:
+                break
+            else:
+                print("Invalid Input")
+        elif option==8:
+            print("=="*50)
+            print("Pressure Conversion")
+            print("=="*50)
+            print("1-bar_to_pascal     2-kilopascal_to_pascal" \
+            "     3-atmosphere_to_pasca    4-PSI_to_Pascal     " \
+            "   5-Bar_to_PSI     6-Exit")
+            print("=="*50)
+            choice=get_count("Enter operation number :")
+            if choice==1:
+                numbers=takeinput(1)
+                print(bar_to_pascal(*numbers),"pascal")
+            elif choice==2:
+                numbers=takeinput(1)
+                print(kilopascal_to_pascal(*numbers),"pascal")
+            elif choice==3:
+                numbers=takeinput(1)
+                print(atmosphere_to_pascal(*numbers),"pascal")
+            elif choice==4:
+                numbers=takeinput(1)
+                print(PSI_to_Pascal(*numbers),"pascal")
+            elif choice==5:
+                numbers=takeinput(1)
+                print(Bar_to_PSI(*numbers),"PSI")
+            elif choice==6:
+                break
+        elif option==8:
+            print("=="*50)
+            print("Data Storage Conversion")
+            print("=="*50)
+            print("1-kilobytes_to_bytes     2-megabytes_to_kilobytes    3-gb_to_mb" \
+            "     4-terabytes_to_gigabytes    5-Exit")
+            print("=="*50)
+            choice=get_count("Enter operation number: ")
+            if choice==1:
+                numbers=takeinput(1)
+                print(kb_to_bytes(*numbers),"bytes")
+            elif choice==2:
+                numbers=takeinput(1)
+                print(mb_to_kb(*numbers),"kb")
+            elif choice==3:
+                numbers=takeinput(1)
+                print(gb_to_mb(*numbers),"mb")
+            elif choice==4:
+                numbers=takeinput(1)
+                print(tb_to_gb(*numbers),"gb")
+            elif choice==5:
+                break
+            else:
+                print("Invalid Input")
+    elif user==4:
+        print("=="*50)
+        print("Geometry Calculator")
+        print("=="*50)
+        print("1-Calculate Area     2-Calculate Perimeter" \
+        "    3-Calculate Volume    4-Calculate Total Surface Area " \
+        "     5-Calculate Lateral Surface Area      6-Calculate Curved Surface Area  " \
+        "   7-Exit")
+        print("=="*50)
+        option=get_count("Enter Calculation type:")
+        if option==1:
+            print("=="*50)
+            print("Calculate Area")
+            print("=="*50)
+            print("1-Area of Square     2- Area of Rectangle     3-Area of Circle " \
+            "   4-Area of Triangle       5-Area of parallelogram    6-Area of Rhombus " \
+            "    7-Area of Trapezium     8-Area of Equilateral Triangle    9-Exit")
+            print("=="*50)
+            choice=get_count("Enter operation number: ")
+            if choice==1:
+                numbers=takeinput(1)
+                print(square_area(*numbers))
+            elif choice==2:
+                numbers=takeinput(2)
+                print(rectangle_area(*numbers))
+            elif choice==3:
+                numbers=takeinput(1)
+                print(circle_area(*numbers))
+            elif choice==4:
+                numbers=takeinput(2)
+                print(triangle_area(*numbers))
+            elif choice==5:
+                numbers=takeinput(2)
+                print(paralellogram_area(*numbers))
+            elif choice==6:
+                numbers=takeinput(2)
+                print(rhombus_area(*numbers))
+            elif choice==7:
+                numbers=takeinput(3)
+                print(trapezium_area(*numbers))
+            elif choice==8:
+                numbers=takeinput(1)
+                print(equilateral_triangle_area(*numbers))
+            elif choice==9:
+                break
+            else:
+                print("Invalid Input")
+        elif option==2:
+            print("=="*50)
+            print("Calculate Perimeter")
+            print("=="*50)
+            print("1-Perimeter of Square    2-Perimeter of Rectangle      3-Circumference of Circle   " \
+            "    4-Perimeter of Triangle     5-Perimeter of Parallelogram    " \
+            "    6-Perimeter of Rhombus       7-Perimeter of Trapezium     " \
+            "    8-Perimeter of Equilateral Triangle    9-Exit")
+            print("=="*50)
+            choice=get_count("Enter operation number: ")
+            if choice==1:
+                numbers=takeinput(1)
+                print(square_perimeter(*numbers))
+            elif choice==2:
+                numbers=takeinput(2)
+                print(rectangle_perimeter(*numbers))
+            elif choice==3:
+                numbers=takeinput(1)
+                print(circle_circumference(*numbers))
+            elif choice==4:
+                numbers=takeinput(3)
+                print(triangle_perimeter(*numbers))
+            elif choice==5:
+                numbers=takeinput(2)
+                print(parallelogram_perimeter(*numbers))
+            elif choice==6:
+                numbers=takeinput(1)
+                print(rhombus_perimeter(*numbers))
+            elif choice==7:
+                numbers=takeinput(4)
+                print(trapezium_perimeter(*numbers))
+            elif choice==8:
+                numbers=takeinput(1)
+                print(equilateral_triangle_perimeter(*numbers))
+            elif choice==9:
+                break
+            else:
+                print("Invalid Input")
+        elif option==3:
+            print("=="*50)
+            print("Calculate Volume")
+            print("=="*50)
+            print("1-Volume of Cube     2-Volume of Cuboid   " \
+            "3- Volume of Cylinder     4- Volume of Cone     " \
+            "  5-Volume of Sphere    6-Volume of Hemisphere    7-Volume of triangular prism " \
+            "  8-Volume of Square Pyramid     9-Volume of rectangular pyramid  " \
+            "    10-Exit")
+            print("=="*50)
+            choice=get_count("Enter operation number: ")
+            if choice==1:
+                numbers=takeinput(1)
+                print(volume_cube(*numbers))
+            elif choice==2:
+                numbers=takeinput(3)
+                print(volume_cuboid(*numbers))
+            elif choice==3:
+                numbers=takeinput(2)
+                print(volume_cylinder(*numbers))
+            elif choice==4:
+                numbers=takeinput(2)
+                print(volume_cone(*numbers))
+            elif choice==5:
+                numbers=takeinput(1)
+                print(volume_sphere(*numbers))
+            elif choice==6:
+                numbers=takeinput(1)
+                print(volume_hemisphere(*numbers))
+            elif choice==7:
+                numbers=takeinput(3)
+                print(volume_triangular_prism(*numbers))
+            elif choice==8:
+                numbers=takeinput(2)
+                print(volume_square_pyramid(*numbers))
+            elif choice==9:
+                numbers=takeinput(3)
+                print(volume_rectangular_pyramid(*numbers))
+            elif choice==10:
+                break
+            else:
+                print("Invalid Input")
+        elif option==4:
+            print("=="*50)
+            print("Calculate Total Surface Area")
+            print("=="*50)
+            print("1-")
         
-                
 
